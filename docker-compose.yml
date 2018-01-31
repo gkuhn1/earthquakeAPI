@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  web_server:
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    # entrypoint:
+    #   - "foreman start"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:9.6.6-alpine
+    ports:
+      - 5490:5490
+    volumes:
+      - ./.data:/var/lib/postgresql/data
+
