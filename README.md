@@ -1,28 +1,43 @@
 # README
 
-This application expose a JSON API to query data about earthquakes that affected LA.
+This application exposes a JSON API to query data about earthquakes that affected LA.
 
-The data is loaded from [here](http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv)
+- The data is loaded from [here](http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv)
 every 30 seconds through a background scheduled job.
+- Events that were already loaded are *not* updated. Only new events are added.
 
 ## Installation
 
 ##### With docker & docker-compose:
 1. `docker-compose build`
-1. `docker-compose up`
+1. `docker-compose start redis db`
+1. `docker-compose up web_server`
 
 ##### Local environment:
 1. Setup redis
-2. Setup postgres
-3. Install Ruby 2.5
-4. Install Bundle
-5. Run `bundle install`
-6. Run `rake db:setup`
-7. Start application with `foreman start`
+1. Setup postgres
+1. Install Ruby 2.5
+1. Install Bundle
+1. Run `bin/setup`
+
+- Application should be available in **http://localhost:3000** for both environments
+
+## Running specs
+
+1. `bin/rspec`
+
+```
+.................
+
+Finished in 0.21713 seconds (files took 3.21 seconds to load)
+17 examples, 0 failures
+```
 
 ## API Examples
 
-### Params
+### GET /earthquakes
+
+##### Params
 - start_at: ISO8601 date time format (default: 30 days ago)
 - end_at: ISO8601 date time format (default: now())
 
