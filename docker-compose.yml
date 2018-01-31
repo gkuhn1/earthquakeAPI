@@ -12,6 +12,7 @@ services:
     #   - "foreman start"
     depends_on:
       - db
+      - redis
 
   db:
     image: postgres:9.6.6-alpine
@@ -20,3 +21,7 @@ services:
     volumes:
       - ./.data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:3.2.11-alpine
+    volumes:
+      - ./.data/redis:/data
