@@ -1,0 +1,2 @@
+RefreshEarthquakeDataJob:
+  cron: "*/30 * * * * *"

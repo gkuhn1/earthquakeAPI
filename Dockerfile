@@ -14,7 +14,7 @@ RUN apk --update add --virtual \
 # Define working directory
 WORKDIR /app
 
-COPY ./Gemfile /app/Gemfile
+COPY ./ /app
 
 # Install Bundler
 RUN gem install bundle
@@ -23,5 +23,3 @@ RUN bundle config build.nokogiri --use-system-libraries
 
 RUN bundle install
 
-# Cleanup
-# RUN apk del build-dependencies

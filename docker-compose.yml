@@ -8,8 +8,7 @@ services:
       - ./:/app
     ports:
       - "3000:3000"
-    # entrypoint:
-    #   - "foreman start"
+    entrypoint: "bin/setup"
     depends_on:
       - db
       - redis
@@ -25,3 +24,4 @@ services:
     image: redis:3.2.11-alpine
     volumes:
       - ./.data/redis:/data
+
