@@ -27,10 +27,11 @@ every 30 seconds through a background scheduled job.
 1. `bin/rspec`
 
 ```
-.................
+............
 
-Finished in 0.21713 seconds (files took 3.21 seconds to load)
-17 examples, 0 failures
+Finished in 0.27069 seconds (files took 3.87 seconds to load)
+12 examples, 0 failures
+
 ```
 
 ## API Examples
@@ -61,7 +62,6 @@ curl -X GET \
       "event_type": "earthquake",
       "distance_from_la": "85.9342143745399",
       "mag": "1.15",
-      "felt_in_la": true,
       "place": "12km NNE of Cabazon, CA",
       "created_at": "2018-01-31T07:44:15.164Z",
       "updated_at": "2018-01-31T07:44:15.164Z"

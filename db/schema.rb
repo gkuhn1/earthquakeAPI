@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131055254) do
+ActiveRecord::Schema.define(version: 20180207211536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,11 @@ ActiveRecord::Schema.define(version: 20180131055254) do
     t.string "event_type", null: false
     t.decimal "distance_from_la", null: false
     t.decimal "mag", null: false
-    t.boolean "felt_in_la", null: false
     t.string "place", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_earthquakes_on_event_id", unique: true
-    t.index ["time", "felt_in_la"], name: "index_earthquakes_on_time_and_felt_in_la"
+    t.index ["time", "mag", "distance_from_la"], name: "index_earthquakes_on_time_and_mag_and_distance_from_la"
   end
 
 end

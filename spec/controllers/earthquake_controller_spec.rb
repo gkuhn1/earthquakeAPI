@@ -10,7 +10,6 @@ RSpec.describe EarthquakesController, type: :controller do
       event_type: "earthquake",
       distance_from_la: "85.9342143745399",
       mag: "1.15",
-      felt_in_la: true,
       place: "12km NNE of Cabazon, CA"
   }}
 
@@ -19,7 +18,7 @@ RSpec.describe EarthquakesController, type: :controller do
 
   describe "#index" do
 
-    it "show when felt_in_la is true" do
+    it "show when distance is less than mag * 100" do
       Earthquake.create(earthquake_data)
 
       resp = get :index
@@ -29,8 +28,8 @@ RSpec.describe EarthquakesController, type: :controller do
     end
 
 
-    it "do not show when felt_in_la is false" do
-      Earthquake.create(earthquake_data.merge({felt_in_la: false}))
+    it "do not show when distance is higher than mag * 100" do
+      Earthquake.create(earthquake_data.merge({distance_from_la: "250.00"}))
 
       resp = get :index
       json = JSON.parse(resp.body)

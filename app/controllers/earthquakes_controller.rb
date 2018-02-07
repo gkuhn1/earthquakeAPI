@@ -2,7 +2,7 @@ class EarthquakesController < ApplicationController
 
   def index
     earthquakes = Earthquake
-      .where(felt_in_la: true)
+      .where("distance_from_la <= mag * 100")
       .where(time: time_range())
       .order(time: :desc)
 

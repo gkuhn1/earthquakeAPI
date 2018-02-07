@@ -9,13 +9,6 @@ class Earthquake < ApplicationRecord
       self.latitude.to_f,
       self.longitude.to_f
     ).to_miles
-
-    self.felt_in_la = (self.distance_felt >= self.distance_from_la)
-  end
-
-
-  def distance_felt
-    self.mag * 100
   end
 
 end
